@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pixel Party — Task Arcade</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>body{font-family:'IBM Plex Sans',sans-serif}.eyebrow,.section-label,nav a,.play,footer{font-family:'IBM Plex Mono',monospace}.hero h1,.section-heading h2,.about h2{letter-spacing:-.045em}</style>
+  <style>.progress-panel{margin:18px 0 22px;padding:16px;background:var(--mint)}.progress-heading{display:flex;justify-content:space-between;font:11px 'DM Mono',monospace;margin-bottom:10px}.progress-track{height:12px;background:rgba(37,28,53,.12);overflow:hidden}.progress-fill{height:100%;width:0;background:var(--pink);transition:width .25s ease}.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:8px}.games-section{border-top:1px solid var(--line);padding:62px 0 90px}.games-section h2{font-size:clamp(36px,6vw,64px);letter-spacing:-.06em;line-height:1;margin:10px 0 30px}.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.game-card{display:flex;flex-direction:column;gap:12px;padding:24px;background:white;border:1px solid var(--line);color:var(--ink);text-decoration:none}.game-icon{font-size:34px}.game-card strong{font-size:25px}.game-card small{color:var(--muted);line-height:1.5;min-height:48px}.play{margin-top:auto;color:var(--pink);font:11px 'DM Mono',monospace}@media(max-width:600px){.game-grid{grid-template-columns:1fr}.secondary{margin:10px 0 0}}</style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top">PIXEL<span>PARTY</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#tasks">Tasks</a>
+        <a href="#about">About</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <p class="eyebrow">WELCOME TO THE HARDWORKERS ARCADE</p>
+      <h1>Take five.<br /><em>Play something.</em></h1>
+      <p class="intro">A small collection of familiar games for a quick break between the things you have to do.</p>
+      <a class="button" href="#games">CHOOSE A GAME ↓</a>
+      <a class="button secondary" href="#tasks">OPEN TASK LIST</a>
+    </section>
+
+    <section class="games-section" id="games">
+      <div class="section-label">01 // MAIN MENU</div>
+      <p class="eyebrow">QUICK GAMES</p>
+      <h2>Choose a game.</h2>
+      <div class="game-grid">
+        <a class="game-card" href="snake.html"><span class="game-icon">🐍</span><strong>Snake</strong><small>Eat dots, grow longer, and avoid your own tail.</small><span class="play">PLAY SNAKE →</span></a>
+        <a class="game-card" href="tetris.html"><span class="game-icon">🟪</span><strong>Tetris</strong><small>Drop blocks, clear lines, and keep the stack low.</small><span class="play">PLAY TETRIS →</span></a>
+        <a class="game-card" href="2048.html"><span class="game-icon">🔢</span><strong>2048</strong><small>Slide matching tiles together until you reach 2048.</small><span class="play">PLAY 2048 →</span></a>
+      </div>
+    </section>
+
+    <section class="tasks-section" id="tasks">
+      <div class="section-label">02 // TASK LOG</div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR QUEST LOG</p>
+          <h2>Pick your next move.</h2>
+        </div>
+        <div class="score" aria-live="polite"><strong id="remaining">0</strong><span>LEFT</span></div>
+      </div>
+
+      <form class="task-form" id="task-form">
+        <label class="sr-only" for="task-input">New task</label>
+        <input id="task-input" type="text" maxlength="100" placeholder="Type a new task…" autocomplete="off" />
+        <button class="button" type="submit">ADD TASK +</button>
+      </form>
+
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button class="filter active" type="button" data-filter="all">ALL</button>
+        <button class="filter" type="button" data-filter="active">ACTIVE</button>
+        <button class="filter" type="button" data-filter="completed">DONE</button>
+        <button class="clear" id="clear-completed" type="button">CLEAR DONE</button>
+      </div>
+      <div class="progress-panel">
+        <div class="progress-heading"><span>QUEST PROGRESS</span><strong id="progress-label">0%</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <ul class="task-list" id="task-list" aria-live="polite"></ul>
+      <p class="empty" id="empty-state">No quests here yet. Add one above to start.</p>
+    </section>
+
+    <section class="about" id="about">
+      <div class="section-label">02 // PIXEL PARTY</div>
+      <h2>Easy to start.<br /><em>Fun to finish.</em></h2>
+      <p>Keep small goals visible, mark your wins, and make room for the next adventure.</p>
+    </section>
+
+    <footer>PIXEL PARTY · MADE FOR PLAYERS</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
